@@ -6,12 +6,11 @@ the following functions:
     * minOperations- is a function that finds least amount of operations to copy
         and paste H's a set n-number of times
 
-
 """
 
 
 def minOperations(n):
-    """ Finds the least number of operations needed to get specified number of H's
+    """Finds the least number of operations needed to get specified number of H's
 
     Parameters
     ----------
@@ -20,7 +19,7 @@ def minOperations(n):
 
     Returns
     -------
-    int
+    int:
         number of operations
     """
     operations = 0
