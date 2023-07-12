@@ -10,7 +10,7 @@ the following functions:
 """
 
 
-def minOperations(n: int) -> int:
+def minOperations(n):
     """ Finds the least number of operations needed to get specified number of H's
 
     Parameters
