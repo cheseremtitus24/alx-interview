@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/python3
 """Finds minimum number of operations needed to print H's
 
 This file can also be imported as a module and contains
