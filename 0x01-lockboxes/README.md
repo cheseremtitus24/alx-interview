@@ -1,0 +1,1 @@
+Checks to verify that All Boxes[list] within a List are unlockable
