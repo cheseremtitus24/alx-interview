@@ -53,7 +53,7 @@ if __name__ == "__main__":
                     codes[fact[-2]] += 1
                 """ If there is a lenght """
                 size += int(fact[-1])
-            except:
+            except BaseException:
                 pass
             """ Printing control """
             cnt += 1
