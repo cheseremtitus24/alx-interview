@@ -1,0 +1,48 @@
+const process = require('process');
+const requests = require('request');
+
+const url = `https://swapi-api.alx-tools.com/api/films/${process.argv[2]}`;
+
+requests.get(url, (err, res, body) => {
+  if (err) {
+    console.error(err);
+  } else {
+    const data = JSON.parse(body);
+    const characters = data.characters;
+    // console.log(characters);
+    for (character of characters){
+       
+        requests.get(character, (err, res, body) => {
+            if (err) {
+              console.error(err);
+            } else {
+                const off_set_name = JSON.parse(body);
+                console.log(off_set_name.name)
+            }
+        
+        
+        
+        // console.log(item);
+        });
+        }
+
+    // const dictionary = user.dictionary;
+    // console.log(dictionary.word);
+  }
+});
+
+
+
+
+
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
