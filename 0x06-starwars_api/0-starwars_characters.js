@@ -1,51 +1,24 @@
 #!/usr/bin/node
-const process = require('process');
+
 const request = require('request');
+const args = process.argv[2];
 
-const fetchFilmData = (filmId) => {
-    return new Promise((resolve, reject) => {
-        const url = `https://swapi-api.alx-tools.com/api/films/${filmId}`;
+request('https://swapi-api.alx-tools.com/api/films/' + args, (error, response, body) => {
+  if (error) throw error;
+  else {
+    const characters = JSON.parse(body).characters;
+    order(characters, 0);
+  }
+});
 
-        request.get(url, (err, res, body) => {
-            if (err) {
-                reject(err);
-            } else {
-                const data = JSON.parse(body);
-                const characters = data.characters;
-                const characterPromises = characters.map((characterUrl) => {
-                    return new Promise((resolve, reject) => {
-                        request.get(characterUrl, (err, res, body) => {
-                            if (err) {
-                                reject(err);
-                            } else {
-                                const characterData = JSON.parse(body);
-                                console.log(characterData.name);
-                                resolve();
-                            }
-                        });
-                    });
-                });
-
-                Promise.all(characterPromises)
-                    .then(resolve)
-                    .catch(reject);
-            }
-        });
+const order = (characters, x) => {
+  if (x < characters.length) {
+    request(characters[x], function (err, res, bod) {
+      if (err) throw err;
+      else {
+        console.log(JSON.parse(bod).name);
+        order(characters, x + 1);
+      }
     });
+  }
 };
-
-const main = async () => {
-    const filmId = process.argv[2];
-    if (!filmId) {
-        console.error('Film ID is missing.');
-        return;
-    }
-
-    try {
-        await fetchFilmData(filmId);
-    } catch (error) {
-        console.error(error);
-    }
-};
-
-main();
