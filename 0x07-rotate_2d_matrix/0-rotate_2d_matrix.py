@@ -18,4 +18,3 @@ def rotate_2d_matrix(matrix):
             swap(matrix, i, j, j, i)
     for row in matrix:
         row.reverse()
-
