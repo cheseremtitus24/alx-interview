@@ -13,6 +13,7 @@ const fetchFilmData = (filmId) => {
                 const data = JSON.parse(body);
                 const characters = data.characters;
                 const characterPromises = characters.map((characterUrl) => {
+			console.log(characterUrl);
                     return new Promise((resolve, reject) => {
                         request.get(characterUrl, (err, res, body) => {
                             if (err) {
