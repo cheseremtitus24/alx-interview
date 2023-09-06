@@ -12,7 +12,7 @@ def isWinner(x, nums):
     for i in range(2, int(maximum ** 0.5) + 1):
         if not sort[i]:
             continue
-        for j in range(i*i, maximum + 1, i):
+        for j in range(i * i, maximum + 1, i):
             sort[j] = False
 
     sort[0] = sort[1] = False
@@ -30,4 +30,3 @@ def isWinner(x, nums):
     if maria_win * 2 > len(nums):
         winner = "Maria"
     return winner
-    
